@@ -1,0 +1,41 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+
+
+{% load static %}
+
+<br><br>
+<div class="row justify-content-center my-3">
+    <div class="col-8">
+<img src="{% static 'portfolio/siddhi_img.jpg'%}">
+</div>
+</div>
+
+<div class="row justify-content-center mb-3">
+    <div class="col-md-9 text-center">
+      <h2 id="hometext" class="font-weight-bold">Siddhi is a Senior System Engineer at Infosys.Ltd.</h2>
+    </div>
+  </div>
+<br>
+<h2 class="mt-4">Portfolio</h2>
+
+<div class="row">
+{% for p in projects%}
+
+<div class="col-lg-4 col-md-6">
+
+{% if p.url%}
+<a href="{{p.url}}"><img src="{{ p.image.url }}" class="img-fluid mb-2"></a>
+{% else %}
+
+    <img src="{{ p.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.description }}</p>
+    </div>
+
+{%endfor%}
+
+{% endblock %}
